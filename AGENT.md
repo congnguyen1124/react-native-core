@@ -12,12 +12,24 @@ This repository is an Expo SDK 57 React Native app using Expo Router, strict Typ
 ## Project Facts
 
 - App entry: `expo-router/entry`.
+- Product: Solar System, with Home at `/` and planet details at `/planet/[id]`.
 - Routes live under `src/app`.
 - Shared components live under `src/components`.
 - Shared hooks live under `src/hooks`.
 - Shared constants and design tokens live under `src/constants`.
 - Path aliases are configured as `@/* -> src/*` and `@/assets/* -> assets/*`.
 - App config is `app.json`; avoid editing generated native `ios/` or `android/` folders unless the task requires native project work.
+- Vietnamese engineering docs live under `docs/`; start with `docs/README.md` when changing architecture, state, API, navigation, or UI ownership.
+
+## Technology Responsibilities
+
+- Expo Router owns navigation, URL state, deep links, and route params.
+- TanStack Query owns server state, request lifecycle, cache, retries, and invalidation.
+- Zustand owns mutable client state shared across unrelated components or screens. Do not copy Query data into Zustand.
+- `useState` owns short-lived UI state local to a component or screen.
+- Zod validates untrusted data at API and storage boundaries before it becomes a domain model.
+- AsyncStorage persists non-sensitive preferences only. Sensitive device data requires an appropriate secure storage API.
+- `expo-network` connects native connectivity to TanStack Query's `onlineManager`.
 
 ## Architecture Rules
 
@@ -44,6 +56,10 @@ src/features/<feature-name>/
 - Keep UI components mostly presentational. Put side effects, async calls, storage, and permission checks in hooks or services.
 - Prefer local state first. Add global state only when multiple unrelated screens need the same mutable state.
 - Keep network, storage, analytics, and native permission logic behind typed service functions.
+- Validate external JSON with Zod in the owning feature service. Map DTOs to domain models before returning them to hooks or UI.
+- Keep query key factories beside the feature query hooks and include every input that changes the response.
+- Create one stable `QueryClient` outside component render. Preserve the native focus and online lifecycle integration in `src/providers/AppProviders.tsx`.
+- Use narrow Zustand selectors. Persist only the fields that must survive an app restart and account for async hydration when it affects UI correctness.
 - Type public feature inputs and outputs explicitly. Avoid `any`; use narrow unions and typed route params.
 - Use platform-specific files (`.ios.tsx`, `.android.tsx`, `.web.tsx`) only for real platform differences.
 
@@ -56,6 +72,8 @@ src/features/<feature-name>/
 - Add accessibility labels, roles, and states for interactive controls.
 - Use `expo-image` for image-heavy UI when it improves loading, caching, or transitions.
 - For long lists, prefer proven virtualized list components and avoid rendering large arrays directly inside `ScrollView`.
+- Put domain-agnostic primitives in `src/components`; keep components that understand `Planet` or other feature copy under their owning feature.
+- Planet PNG files belong under `assets/images/planets/` and must be referenced through a static asset map. Use `expo-image` when those assets are introduced.
 
 ## Expo Rules
 
@@ -71,6 +89,7 @@ Run the smallest useful checks before finishing:
 ```bash
 npm run lint
 npx tsc --noEmit
+npx expo-doctor
 ```
 
 For UI changes, also run the relevant app target when practical:

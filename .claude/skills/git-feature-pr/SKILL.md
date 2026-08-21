@@ -1,6 +1,6 @@
 ---
 name: git-feature-pr
-description: Use when creating a branch, committing feature work, pushing it, or opening a pull request. Enforces the project branch format and PR title format feat(feature_name): Verb title.
+description: "Use when creating a branch, committing feature work, pushing it, or opening a pull request. Enforces the project branch format and PR title format feat(feature_name): Verb title."
 ---
 
 # Git Feature PR Workflow
