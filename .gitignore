@@ -1,0 +1,74 @@
+# Dependencies
+node_modules/
+.pnp/
+.pnp.js
+
+# Expo
+.expo/
+dist/
+web-build/
+expo-env.d.ts
+.expo-shared/
+
+# React Native
+.metro-health-check*
+.bundle/
+*.jsbundle
+*.hprof
+
+# Native build outputs
+ios/
+android/
+build/
+DerivedData/
+*.xcworkspace/xcuserdata/
+*.xcodeproj/xcuserdata/
+*.xcuserstate
+ios/Pods/
+ios/build/
+ios/.xcode.env.local
+android/.gradle/
+android/app/build/
+android/build/
+android/local.properties
+.gradle/
+.kotlin/
+
+# Native signing and secrets
+*.jks
+*.p8
+*.p12
+*.key
+*.mobileprovision
+*.orig.*
+
+# Logs
+logs/
+*.log
+npm-debug.*
+yarn-debug.*
+yarn-error.*
+pnpm-debug.*
+
+# Environment
+.env
+.env.*
+!.env.example
+
+# Coverage and test output
+coverage/
+.nyc_output/
+
+# OS files
+.DS_Store
+Thumbs.db
+*.pem
+
+# IDE
+.idea/
+
+# TypeScript
+*.tsbuildinfo
+
+# Local examples and scratch projects
+example/
