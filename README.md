@@ -11,6 +11,20 @@ npm install
 npx expo start
 ```
 
+Nếu mở trên Android device thật bằng Expo Go mà chỉ thấy loading xoay, chạy Metro qua tunnel:
+
+```bash
+npm run start:tunnel
+```
+
+Khi device đang kết nối ADB và muốn CLI tự mở app:
+
+```bash
+npm run android:device
+```
+
+Chi tiết tại [docs/09-chay-android-device.md](docs/09-chay-android-device.md).
+
 Các lệnh kiểm tra chính:
 
 ```bash

@@ -10,6 +10,7 @@ Bộ tài liệu này là onboarding kỹ thuật cho developer mới. Nên đ�
 6. [UI, component và assets](06-ui-component-va-assets.md)
 7. [Quy trình thêm feature](07-them-feature-moi.md)
 8. [Chất lượng, hiệu năng và vận hành](08-chat-luong-va-hieu-nang.md)
+9. [Chạy app trên Android device](09-chay-android-device.md)
 
 ## Stack được chọn
 

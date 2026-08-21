@@ -42,8 +42,10 @@
   },
   "scripts": {
     "start": "expo start",
+    "start:tunnel": "expo start --tunnel",
     "reset-project": "node ./scripts/reset-project.js",
     "android": "expo start --android",
+    "android:device": "expo start --android --tunnel",
     "ios": "expo start --ios",
     "web": "expo start --web",
     "lint": "expo lint"

@@ -81,6 +81,7 @@ src/features/<feature-name>/
 - Add permissions through Expo config/plugins rather than ad hoc native edits.
 - Prefer Expo SDK APIs already compatible with SDK 57 before adding third-party native modules.
 - After adding or changing native-capability packages, verify whether `npx expo prebuild` or a development build is required.
+- If Android physical devices stay on the Expo Go loading screen while emulator works, verify Metro connectivity first and use `npm run start:tunnel` or `npm run android:device` before changing app state/query code.
 
 ## Quality Gates
 
